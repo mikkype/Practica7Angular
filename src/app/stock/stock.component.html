@@ -1,0 +1,26 @@
+<h1>Stock de Products</h1>
+
+<table class="table text-center" >
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody class="body" *ngFor="let p of productArr">
+        <tr>
+            <td>{{p.codigo}}</td>
+            <td>{{p.descripcion}}</td>
+            <td>{{p.cantidad}}</td>
+            <td>{{p.precio}}</td>
+            <td><button class="btn btn-danger mx-3" >Borrar</button>
+            <button class="btn btn-primary" >Seleccionar</button></td>
+        </tr>
+
+    </tbody>
+
+</table>
+
