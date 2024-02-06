@@ -7,9 +7,9 @@ import { Product } from '../models/product.model';
   styleUrl: './stock.component.css'
 })
 export class StockComponent {
-public productArrNew : Product = new Product(0,"",0,0);
+public product: Product = new Product(0,"",0,0);
 
-public productArr : Product []= [
+public products : Product []= [
   new Product (1,'mobile lcd',5,50),
   new Product (2,'port usb',8,30),
   new Product (3,'b7000-glue',6,10),
@@ -19,30 +19,35 @@ public productArr : Product []= [
 ]
 
 addProduct(){
-  this.productArr.push(this.productArrNew);
+  this.products.push(this.product);
+  this.product = new Product(0,"",0,0);
   
 }
 
+
+deleteProduct(product: Product) {
+  // Recorrer el array de productos con foreach
+  this.products.forEach((p, index) => {
+    // Si el producto coincide con el parámetro, eliminarlo con splice
+    if (p.code === product.code) {
+      this.products.splice(index, 1);
+    }
+  });
+}
+
+
 modifyProduct(){
-  var index = this.productArr.findIndex(p => p.code === this.productArrNew.code);
+  var index = this.products.findIndex(p => p.code === this.product.code);
   if(index!==-1) {
-    this.productArr[index] = this.productArrNew;
+    this.products[index] = this.product;
   }
-  this.productArrNew = new Product (0,'',0,0);
+  this.product = new Product (0,'',0,0);
 }
+selectProduct(product:Product){
+  this.product = product;
 
-
-
-
-
-
-selectProduct(productArrNew:Product){
-  this.productArrNew.code = productArrNew.code;
-  this.productArrNew.description = productArrNew.description;
-  this.productArrNew.quantity = productArrNew.quantity;
-  this.productArrNew.price = productArrNew.price;
+}
 
 }
 
 
-}

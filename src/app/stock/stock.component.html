@@ -1,7 +1,7 @@
 <h1>Stock de Products</h1>
 
  
- <table *ngIf="productArr.length>0;else noProduct"  class=" table text=center">
+ <table *ngIf="products.length>0;else noProduct"  class=" table text=center">
     <thead>
         <tr>
             <th>Code</th>
@@ -11,14 +11,16 @@
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody class="body" *ngFor="let p of productArr">
+    <tbody class="body" *ngFor="let p of products">
         <tr>
             <td>{{p.code}}</td>
             <td>{{p.description}}</td>
             <td>{{p.quantity}}</td>
             <td>{{p.price}}</td>
-            <td><button class="btn btn-danger mx-3" >Borrar</button>
-            <button class="btn btn-primary" (click)="selectProduct(productArrNew)">Seleccionar</button></td>
+            <td>
+                <button class="btn btn-danger mx-3" (click)="deleteProduct(p)">Borrar</button>
+            <button class="btn btn-primary" (click)="selectProduct(p)">Seleccionar</button>
+        </td>
         </tr>
 
     </tbody>
@@ -28,13 +30,13 @@
 
 <form class="">
     <h2>Product</h2>
-    <p>Code :<input type="text" id="code" name="code" [(ngModel)]="productArrNew.code"></p>
-    <p>Description:<input type="text" id="description" name="description" [(ngModel)]="productArrNew.description"></p>
-    <p>quantity :<input type="text" id="quantity" name="quantity" [(ngModel)]="productArrNew.quantity"></p>
-    <p>Price :<input type="text" id="price" name="price" [(ngModel)]="productArrNew.price"></p>
+    <p>Code :<input type="text" id="code" name="code" [(ngModel)]="product.code"></p>
+    <p>Description:<input type="text" id="description" name="description" [(ngModel)]="product.description"></p>
+    <p>quantity :<input type="text" id="quantity" name="quantity" [(ngModel)]="product.quantity"></p>
+    <p>Price :<input type="text" id="price" name="price" [(ngModel)]="product.price"></p>
     <button class="btn btn-success" (click)="addProduct()">Add</button>
     <button class="btn btn-warning" (click)="modifyProduct()">Modify</button>
-    <button class="btn btn-warning" type="reset">Reset</button>
+    <button class="btn btn-warning" type="button" >Reset</button>
 
 </form>
 
