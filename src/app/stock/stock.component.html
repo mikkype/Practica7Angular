@@ -18,7 +18,7 @@
             <td>{{p.quantity}}</td>
             <td>{{p.price}}</td>
             <td><button class="btn btn-danger mx-3" >Borrar</button>
-            <button class="btn btn-primary" >Seleccionar</button></td>
+            <button class="btn btn-primary" (click)="selectProduct(productArrNew)">Seleccionar</button></td>
         </tr>
 
     </tbody>
@@ -28,12 +28,12 @@
 
 <form class="">
     <h2>Product</h2>
-    <p>Code :<input type="text" ></p>
-    <p>Description:<input type="text" ></p>
-    <p>quantity :<input type="text" ></p>
-    <p>Price :<input type="text" ></p>
-    <button class="btn btn-success">Add</button>
-    <button class="btn btn-warning">Modify</button>
+    <p>Code :<input type="text" id="code" name="code" [(ngModel)]="productArrNew.code"></p>
+    <p>Description:<input type="text" id="description" name="description" [(ngModel)]="productArrNew.description"></p>
+    <p>quantity :<input type="text" id="quantity" name="quantity" [(ngModel)]="productArrNew.quantity"></p>
+    <p>Price :<input type="text" id="price" name="price" [(ngModel)]="productArrNew.price"></p>
+    <button class="btn btn-success" (click)="addProduct()">Add</button>
+    <button class="btn btn-warning" (click)="modifyProduct()">Modify</button>
     <button class="btn btn-warning" type="reset">Reset</button>
 
 </form>

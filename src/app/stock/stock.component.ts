@@ -20,11 +20,29 @@ public productArr : Product []= [
 
 addProduct(){
   this.productArr.push(this.productArrNew);
+  
 }
 
 modifyProduct(){
-  
-}
+  var index = this.productArr.findIndex(p => p.code === this.productArrNew.code);
+  if(index!==-1) {
+    this.productArr[index] = this.productArrNew;
+  }
+  this.productArrNew = new Product (0,'',0,0);
 }
 
 
+
+
+
+
+selectProduct(productArrNew:Product){
+  this.productArrNew.code = productArrNew.code;
+  this.productArrNew.description = productArrNew.description;
+  this.productArrNew.quantity = productArrNew.quantity;
+  this.productArrNew.price = productArrNew.price;
+
+}
+
+
+}
